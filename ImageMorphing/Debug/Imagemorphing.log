@@ -1,0 +1,4 @@
+﻿  main.cpp
+c:\users\andrew\desktop\imagemorphing\imagemorphing\eigen3\eigen\src\core\arch\cuda\half.h : warning C4819: 该文件包含不能在当前代码页(936)中表示的字符。请将该文件保存为 Unicode 格式以防止数据丢失
+c:\users\andrew\desktop\imagemorphing\imagemorphing\main.cpp(99): warning C4018: “<”: 有符号/无符号不匹配
+  Imagemorphing.vcxproj -> C:\Users\Andrew\Desktop\ImageMorphing\Debug\Imagemorphing.exe
