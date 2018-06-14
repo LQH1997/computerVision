@@ -13,19 +13,32 @@ ostu::ostu(string str) {
 }
 
 void ostu::startSeg(string str) {
+
   input.load(str.c_str());
+
   height = input.height();
+
   width = input.width();
+
   lowThreshold = 0;
+
   highThreshold = 1;
+
   bestLowThreshold = 0;
+
   bestHighThreshold = 1;
+
   bestVar = -100000;
+
   // input.display();
   toGrayScale();
+
   createGaussianKernel(5 , 5,  1);
+
   gaussianFilter();
+
   findIntensity();
+
   normalizeIntensity();
   for(int lowTh = 0; lowTh < 255; lowTh++) {
     lowThreshold = lowTh;
@@ -42,19 +55,24 @@ void ostu::startSeg(string str) {
 CImg<unsigned char> ostu::toGrayScale() {
   // int width = input.width();
   // int height = input.height();
+  cout << "width: " << width << " height " << height << endl;
+  int tempWidth = width;
+  int tempHeight = height;
   unsigned char r, g, b;
   unsigned char gray;
-  grayScaled = CImg<unsigned char>(width, height, 1, 1);
-  for(int i = 0; i < width; i++) {
-    for(int j = 0; j < height; j++) {
+  grayScaled = CImg<unsigned char>(tempWidth, tempHeight, 1, 1);
+  for(int i = 0; i < tempWidth; i++) {
+    for(int j = 0; j < tempHeight; j++) {
       r = input(i, j, 0, 0);
       g = input(i, j, 0, 1);
       b = input(i, j, 0, 2);
       gray = round(0.3*((double)r) + 0.6*((double)g)+0.1*((double)b));
       grayScaled(i,j,0,0) = gray;
+       // cout << i << " " << j << endl;
     }
   }
-  // grayScaled.display();
+   // grayScaled.display();
+  return grayScaled;
 }
 
 //Generate size*size Gaussian Kernel
